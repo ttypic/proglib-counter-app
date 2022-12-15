@@ -13,11 +13,16 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+            export("com.arkivanov.decompose:decompose:1.0.0-alpha-07")
         }
     }
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                api("com.arkivanov.decompose:decompose:1.0.0-alpha-07")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
